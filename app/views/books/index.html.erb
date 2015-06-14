@@ -34,7 +34,13 @@
       <legend>New Book</legend>
 
       <div class='col-sm-5'>
-        
+        <div class='form-group'>
+          <label class ='col-sm-2 control-label'>Genre</label>
+          <div class='col-sm-10'>
+            <%= f.select :genre_ids,
+            @genres.map{|g| [g.name, g.id]},{},{multiple: true} %>
+          </div>
+        </div>
 
         <br>
 
@@ -78,11 +84,12 @@
       </ul>
     </div>
     <div class="col-sm-4">
-       <h2>Genres</h2>
+      <h2>Genres</h2>
       <ul class="list-unstyled">
         <% @genres.each do |genre| %>
           <li>
-          <%= link_to genre.name, books_path(filter: genre.name), class: 'label label-primary' %>
+            <%= link_to genre.name, books_path(filter: genre.name),
+              class: 'label label-primary' %>
           </li>
         <% end %>
       </ul>
